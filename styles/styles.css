@@ -1,0 +1,207 @@
+*,
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+/* desktop */
+.desktop {
+    font-family: sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    background-color: #40AAAC;
+}
+
+.desktop__icon {
+    display: block;
+    position: absolute;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+#desktop--cinco {
+    top: 20px;
+    left: 21px;
+    width: 75px;
+    height: 45px;
+    background: url(../images/cinco2.5.png) no-repeat 0 0;
+}
+
+#desktop--original {
+    top: 90px;
+    left: 21px;
+    width: 75px;
+    height: 49px;
+    background: url(../images/video.png) no-repeat 0 0;
+}
+
+/* windows */
+.windows {
+    display: none;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.window {
+    background: #edeced;
+    color: black;
+    text-align: center;
+}
+.window h3 {
+    display:block;
+    font-weight:bold;
+    font-size: 16px;
+    height: 20px;
+}
+
+#window--prompt {
+     background: #000;
+     color: white;
+     font-size: 36px;
+     text-align: left;
+}
+#window--prompt p {
+    width: 500px;
+}
+
+#window--loader h3 {
+    width: 400px;
+}
+
+/* windows - welcome */
+#window--welcome .header {
+    width: 100%;
+}
+#window--welcome .progress  {
+    margin-top: 20px;
+}
+#window--welcome .progress span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#window--welcome .options {
+    display: none;
+    margin: 20px auto 0;
+}
+
+#window--welcome .options h2 {
+    display: block;
+    font-weight:bold;
+    font-size: 16px;
+    height: 30px;
+    padding: 10px;
+}
+
+#window--welcome .options ul {
+    width: 450px;
+    margin: 0px auto;
+    list-style-type: none;
+    text-align: center;
+}
+#window--welcome .options ul > li {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.window--picture {
+    background: #fff;
+}
+
+/* windows - progrss bar */
+.window progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 75%;
+    height: 35px;
+    margin: 20px 0;
+    border: none;
+    color: #0420ac;
+}
+
+.window progress::-moz-progress-bar {
+    background: #0420ac;
+}
+
+.window progress::-webkit-progress-bar {
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.window progress::-webkit-progress-value {
+    background: #0420ac;
+}
+
+/* customize jquery ui */
+
+.ui-draggable .ui-dialog-titlebar {
+    cursor: move;
+}
+
+.ui-dialog {
+    position: absolute;
+    padding: 0;
+    overflow: hidden;
+}
+
+.ui-widget-content {
+    border: 5px ridge #ccc;
+    outline: 1px solid #000 !important;
+}
+
+.ui-dialog-content {
+    border: 0;
+    padding: 10px;
+    position: relative;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background: #fff;
+    height: 30px;
+    position: relative;
+    padding-left: 40px;
+}
+
+.ui-dialog .ui-dialog-title {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.ui-dialog .ui-dialog-title:after {
+    border: 1px solid #222;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 61px;
+    height: 30px;
+    margin: -1px -1px;
+    background: url(../images/arrows.png) no-repeat;
+    background-size: 61px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+    background: url(../images/close.png) no-repeat;
+    background-position: center; 
+    border: 1px solid #222;
+    cursor: pointer;
+    margin: -1px -1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close span {
+    display: none;
+}
