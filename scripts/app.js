@@ -1,6 +1,6 @@
 
-var page = {
-    image_sources: {
+var application = {
+    sources: {
         celery: [
             "5.gif",
             "6.gif",
@@ -28,7 +28,13 @@ var page = {
         ]
     },
     image_prefix: '/images/',
-    loaded_images: {
+    titles: {
+        celery: 'Celery Man',
+        oyster: 'OYSER',
+        tayne: 'Tayne',
+        mozza: 'MOZZA-RELL'
+    },
+    loaded: {
         celery: 0,
         oyster: 0,
         tayne: 0,
@@ -40,221 +46,242 @@ var page = {
         tayne: false,
         mozza: false
     },
-    load_module: function(sequence) {
+
+    show_sequence: function(sequence) {
+        var sources = this.sources[sequence],
+            renderer = this.render[sequence].bind(this);
+
+        var func = function() {
+            if (this.module_is_loaded[sequence]) {
+                $("#window--welcome").dialog('close');
+                return renderer();
+            }
+
+            $("#window--welcome").dialog('close');
+            $("#window--loader").dialog('open');
+
+            for (index = 0; index < sources.length; index++) {
+                var identifier = sequence + sources[index].slice(0, -4);
+
+                var img = new Image();
+                img.src = this.image_prefix + sequence + sources[index];
+                img.onload = this.picture_loader(sequence, identifier, img);
+            }
+        };
+
+        return func.bind(this);
+    },
+
+    load_sequence: function(sequence) {
         var renderer = this.render[sequence].bind(this);
 
-        if (this.module_is_loaded[sequence]) return renderer();
+        var showIdentity = function() {
+            $("#window--loader").dialog('close');
+            $("#window--loader progress").val(10);
+            renderer();
+        };
 
-        var sources = this.image_sources[sequence],
-            loaded = this.loaded_images[sequence];
-
-        $("#window--loader").dialog({
-            width: "auto",
-            height: "auto",
-        });
-
-        $("#window--loader").parent().show();
-        var windows = $(".windows");
-
-        for (g = 0; g < sources.length; g++) {
-            var h = document.createElement("img");
-            h.src = this.image_prefix + sequence + sources[g],
-
-            h.style.display = "hidden";
-            h.onload = function(g) {
-                return function() {
-                    loaded++;
-                    var identifier = sequence + sources[g].slice(0, -4);
-                    console.log(identifier);
-                    $('<div class="window--picture" id="' + identifier + '"><img src="' + this.src + '"></div>').appendTo(windows);
-
-                    if (loaded == sources.length) {
-                        $("#window--loader progress").val(100);
-                        setTimeout(function() {
-                            $("#window--loader").parent().hide();
-                            $("#window--loader progress").val(10);
-                            renderer();
-                        }, 1e3);
-                    } else {
-                        $("#window--loader progress").val(100 * loaded / sources.length);
-                    }
-                }
-            }(g);
-        }
+        setTimeout(showIdentity, 1000);
     },
+
+    picture_loader: function(sequence, identifier, img) {
+        var total = this.sources[sequence].length,
+            title = this.titles[sequence];
+
+        var func = function() {
+            this.loaded[sequence]++;
+            var loaded = this.loaded[sequence];
+
+            console.log('Loaded: ' + identifier);
+
+            $('<div></div>')
+                .attr('id', identifier)
+                .attr('title', title)
+                .addClass('window window--picture')
+                .append(img)
+                .appendTo('.windows');
+
+            if (loaded < total) {
+                $("#window--loader progress").val(100 * loaded / total);
+
+            } else {
+                $("#window--loader progress").val(100);
+                this.load_sequence(sequence);
+            }
+        };
+
+        return func.bind(this);
+    },
+
     render: {
         celery: function() {
-            var windows = $("#celery5, #celery6, #celery7, #celery8");
-            if (this.module_is_loaded['celery']) {
-                audio.stop();
-                audio.toggleLoop("celery");
+            var $window1 = $('#celery5'),
+                $window2 = $('#celery6'),
+                $window3 = $('#celery7'),
+                $window4 = $('#celery8'),
+                $windows = $($window1)
+                    .add($window2)
+                    .add($window3)
+                    .add($window4);
 
-                windows.parent().show();
-            } else {
-                windows.dialog({
-                    height: "auto",
-                    width: "auto",
-                    title: 'Celery Man',
-                    resizable: false
-                });
+            audio.stop();
+            audio.toggleLoop("celery");
 
-                $("#celery5").parent().css({
-                    top: "340px",
-                    left: "350px"
-                });
-                $("#celery6").parent().css({
-                    top: "200px",
-                    left: "40px"
-                });
-                $("#celery7").parent().css({
-                    top: "220px",
-                    left: "650px"
-                });
-                $("#celery8").parent().css({
-                    top: "50px",
-                    left: "290px"
-                });
-
-                audio.stop();
-                audio.toggleLoop("celery");
-
+            if (!this.module_is_loaded['celery']) {
                 this.module_is_loaded['celery'] = true;
+                this.dialogize($windows, {my: "left top"}); 
+
+                $window1.dialog('option', 'position.at', "left+350 top+340");    
+                $window2.dialog('option', 'position.at', "left+40 top+200");    
+                $window3.dialog('option', 'position.at', "left+650 top+220");    
+                $window4.dialog('option', 'position.at', "left+290 top+50");    
             }
+            
+            $windows.dialog('open');
+
         },
         oyster: function() {
-            var windows = $("#oyster9, #oyster10, #oyster11, #oyster12");
+            var $window1 = $('#oyster9'),
+                $window2 = $('#oyster10'),
+                $window3 = $('#oyster11'),
+                $window4 = $('#oyster12'),
+                $windows = $($window1)
+                    .add($window2)
+                    .add($window3)
+                    .add($window4);
 
-            if (this.module_is_loaded['oyster']) {
-                audio.stop();
-                audio.toggleLoop("celery");
-                audio.toggleLoop("oyster");
+            audio.stop();
+            audio.toggleLoop("celery");
+            audio.toggleLoop("oyster");
 
-                windows.parent().show();
-            } else {
-                windows.dialog({
-                    height: "auto",
-                    width: "auto",
-                    title: 'OYSTER',
-                    resizable: false
-                });
-
-                $("#oyster9").parent().css({
-                    top: "410px",
-                    left: "550px"
-                });
-                $("#oyster10").parent().css({
-                    top: "100px",
-                    left: "40px"
-                });
-                $("#oyster11").parent().css({
-                    top: "420px",
-                    left: "110px"
-                });
-                $("#oyster12").parent().css({
-                    top: "50px",
-                    left: "380px"
-                });
-
-                audio.stop();
-                audio.toggleLoop("celery");
-                audio.toggleLoop("oyster");
-
+            if (!this.module_is_loaded['oyster']) {
                 this.module_is_loaded['oyster'] = true;
+                this.dialogize($windows, {my: "left top"}); 
+
+                $window1.dialog('option', 'position.at', "left+550 top+410");     
+                $window2.dialog('option', 'position.at', "left+40 top+100");     
+                $window3.dialog('option', 'position.at', "left+110 top+420");     
+                $window4.dialog('option', 'position.at', "left+380 top+50");     
             }
+
+            $windows.dialog('open');
         },
         tayne: function() {
-            var windows = $("#tayne13, #tayne14, #tayne15, #tayne16, #tayne17, #tayne18");
+            var $window1 = $('#tayne13'),
+                $window2 = $('#tayne14'),
+                $window3 = $('#tayne15'),
+                $window4 = $('#tayne16'),
+                $window5 = $('#tayne17'),
+                $window6 = $('#tayne18'),
+                $windows = $($window1)
+                    .add($window2)
+                    .add($window3)
+                    .add($window4)
+                    .add($window5)
+                    .add($window6);
 
-            if (this.module_is_loaded['tayne']) {
-                audio.stop();
-                audio.toggleLoop("tayne");
+            audio.stop();
+            audio.toggleLoop("tayne");
 
-                windows.parent().show();
-            } else {
-                windows.dialog({
-                    height: "auto",
-                    width: "auto",
-                    title: 'Tayne',
-                    resizable: false
-                });
-
-                $("#tayne13").parent().css({
-                    top: "410px",
-                    left: "630px"
-                });
-                $("#tayne14").parent().css({
-                    top: "330px",
-                    left: "40px"
-                });
-                $("#tayne15").parent().css({
-                    top: "40px",
-                    left: "150px"
-                });
-                $("#tayne16").parent().css({
-                    top: "100px",
-                    left: "380px"
-                });
-                $("#tayne17").parent().css({
-                    top: "50px",
-                    left: "710px"
-                });
-                $("#tayne18").parent().css({
-                    top: "420px",
-                    left: "250px"
-                });
-
-                audio.stop();
-                audio.toggleLoop("tayne");
-
+            if (!this.module_is_loaded['tayne']) {
                 this.module_is_loaded['tayne'] = true;
+                this.dialogize($windows, {my: "left top"});
+
+                $window1.dialog('option', 'position.at', "left+630 top+410");  
+                $window2.dialog('option', 'position.at', "left+40 top+330");  
+                $window3.dialog('option', 'position.at', "left+150 top+40");  
+                $window4.dialog('option', 'position.at', "left+380 top+100");  
+                $window5.dialog('option', 'position.at', "left+710 top+50");  
+                $window6.dialog('option', 'position.at', "left+250 top+420");  
             }
+
+            $windows.dialog('open');
         },
         mozza: function() {
-            var windows = $("#mozza19, #mozza20, #mozza21");
+            var $window1 = $('#mozza19'),
+                $window2 = $('#mozza20'),
+                $window3 = $('#mozza21'),
+                $windows = $($window1)
+                    .add($window2)
+                    .add($window3);
 
-            if (this.module_is_loaded['mozza']) {
-                audio.stop();
-                audio.toggleLoop("celery");
+            audio.stop();
+            audio.toggleLoop("celery");
 
-                windows.parent().show();
-            } else {
-                windows.dialog({
-                    height: "auto",
-                    width: "auto",
-                    title: 'MOZZA-RELL',
-                    resizable: false
-                });
-
-                $("#mozza19").parent().css({
-                    top: "450px",
-                    left: "260px"
-                });
-                $("#mozza20").parent().css({
-                    top: "100px",
-                    left: "40px"
-                });
-                $("#mozza21").parent().css({
-                    top: "150px",
-                    left: "600px"
-                });
-
-                audio.stop();
-                audio.toggleLoop("celery");
-
+            if (!this.module_is_loaded['mozza']) {
                 this.module_is_loaded['mozza'] = true;
+                this.dialogize($windows, {my: "left top"});
+
+                $window1.dialog('option', 'position.at', "left+260 top+450");      
+                $window2.dialog('option', 'position.at', "left+40 top+100");      
+                $window3.dialog('option', 'position.at', "left+600 top+150");      
             }
+
+            $windows.dialog('open');
         }
+    },
+
+    boot: function() {
+        var $standard = $("#window--welcome, #window--loader"),
+            $prompt = $('#window--prompt');
+            $original = $('#window--original');
+
+        this.dialogize($standard);
+        this.dialogize($original);
+        this.dialogize($prompt, {my: "left bottom", at: "left+5% bottom-5%"});
+
+        $original.dialog('option', 'close', function() {
+            var iframe = document.getElementById("window--original").getElementsByTagName("iframe")[0].contentWindow;
+            iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        });
+
+        $("#window--welcome").dialog('open');
+    },
+
+    initialize: function() {
+        $("#window--welcome .progress").hide();
+        $("#window--welcome .options").show();
+        $("#window--prompt").dialog('open');
+
+        $("#option--celery").click(this.show_sequence('celery'));
+        $("#option--oyster").click(this.show_sequence('oyster'));
+        $("#option--tayne").click(this.show_sequence('tayne'));
+        $("#option--mozza").click(this.show_sequence('mozza'));
+
+        $("#desktop--cinco").click(function() {
+            audio.stop();
+            $(".window").dialog('close');
+            $("#window--welcome, #window--prompt").dialog('open');
+        });
+
+        $("#desktop--original").click(function() {
+            $("#window--original").dialog('open').dialog('moveToTop');
+        });
+    },
+
+    dialogize: function($elem, position) {
+        var defaults = {
+            width: "auto",
+            height: "auto",
+            resizable: false,
+            autoOpen: false
+        };
+
+        if (position) {
+            defaults.position = position;
+
+        }
+
+        $elem.dialog(defaults);
     }
 };
 
 audio.run();
 
 $(window).load(function() {
-    $("#window--welcome").dialog({
-        width: "auto",
-        height: "auto",
-        resizable: false
-    });
+
+    application.boot();
+    var initializer = application.initialize.bind(application);
 
     var a = 10;
     var b = setInterval(function() {
@@ -266,50 +293,7 @@ $(window).load(function() {
         }
 
         clearInterval(b);
-
-        $("#window--welcome .progress").hide();
-        $("#window--welcome .options").show();
-
-        $("#window--prompt").dialog({
-            width: "auto",
-            height: "auto",
-            position: {my: "left bottom", at: "left+5% bottom-5%"},
-            resizable: false
-        });
-
-        $("#option--celery").click(function() {
-            page.load_module("celery"),
-            $("#window--welcome").parent().hide();
-        });
-        $("#option--oyster").click(function() {
-            page.load_module("oyster"),
-            $("#window--welcome").parent().hide();
-        });
-        $("#option--tayne").click(function() {
-            page.load_module("tayne"),
-            $("#window--welcome").parent().hide();
-        });
-        $("#option--mozza").click(function() {
-            page.load_module("mozza"),
-            $("#window--welcome").parent().hide();
-        });
-
-        $("#desktop--cinco").click(function() {
-            audio.stop();
-            $(".ui-dialog").hide();
-            $("#window--welcome, #window--prompt").parent().show();
-        });
-
-        $("#desktop--original").click(function() {
-            $("#window--original").dialog({
-                width: "auto",
-                height: "auto",
-                close: function() {
-                    var iframe = document.getElementById("window--original").getElementsByTagName("iframe")[0].contentWindow;
-                    iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                },
-                resizable: false
-            })
-        });
+        initializer();
+        
     }, 100);
 });
