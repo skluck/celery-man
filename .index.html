@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cinco 2.5</title>
+
+        <link rel="stylesheet" href="styles/app.css">
+
+        <script src="scripts/jquery.js"></script>
+        <script src="scripts/jquery-ui.js"></script>
+        <script src="scripts/audio.js"></script>
+        <script src="scripts/app.js"></script>
+    </head>
+    <body class="desktop">
+        <div class="desktop__icon" id="desktop--cinco"></div>
+        <div class="desktop__icon" id="desktop--original"></div>
+
+        <div class="windows">
+            <div id="window--welcome" title="Cinco Identity Generator 2.5" class="window">
+                <img class="header" src="images/cinco.png">
+                <div class="progress">
+                    <h2>Cinco Identity Generator 2.5</h2>
+                    <progress max="100" value="10"></progress>
+                    <h3>Please wait...</h3>
+                </div>
+
+                <div class="options">
+                    <h2>Please choose a sequence:</h2>
+                    <ul>
+                        <li>
+                            <img src="images/btn_celery.png" id="option--celery">
+                            <h4>Celery Man</h4>
+                        </li>
+                        <li>
+                            <img src="images/btn_oyster.png" id="option--oyster">
+                            <h4>Oyster</h4>
+                        </li>
+                        <li>
+                            <img src="images/btn_tayne.png" id="option--tayne">
+                            <h4>Tayne</h4>
+                        </li>
+                        <li>
+                            <img src="images/btn_mozza.png" id="option--mozza">
+                            <h4>Mozza-Rell</h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="window--prompt" title="Paul's COMPUTER" class="window--prompt">
+                <p>Good morning Paul.</p>
+            </div>
+
+            <div id="window--loader" title="Cinco Identity Generator 2.5" class="window">
+                <progress max="100" value="10"></progress>
+                <h3>Loading, please wait...</h3>
+            </div>
+
+            <div id="window--original" title="Cinco Video Generator" class="window">
+                <iframe width="560" height="315" src="http://www.youtube.com/embed/MHWBEK8w_YY?enablejsapi=1" frameborder=0 allowfullscreen></iframe>
+            </div>
+        </div>
+    </body>
+</html>
