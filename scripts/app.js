@@ -1,31 +1,9 @@
-
 var application = {
     sources: {
-        celery: [
-            "5.gif",
-            "6.gif",
-            "7.gif",
-            "8.gif"
-        ],
-        oyster: [
-            "9.gif",
-            "10.gif",
-            "11.gif",
-            "12.png"
-        ],
-        tayne: [
-            "13.gif",
-            "14.gif",
-            "15.gif",
-            "16.gif",
-            "17.gif",
-            "18.png"
-        ],
-        mozza: [
-            "19.gif",
-            "20.gif",
-            "21.png"
-        ]
+        celery: ["5.gif",   "6.gif",  "7.gif",  "8.gif"],
+        oyster: ["9.gif",  "10.gif", "11.gif", "12.png"],
+        tayne:  ["13.gif", "14.gif", "15.gif", "16.gif", "17.gif", "18.png"],
+        mozza:  ["19.gif", "20.gif", "21.png"]
     },
     image_prefix: '/images/',
     titles: {
