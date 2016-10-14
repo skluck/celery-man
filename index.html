@@ -3,61 +3,122 @@
         <meta charset="UTF-8">
         <title>Cinco 2.5</title>
 
-        <link rel="stylesheet" href="styles/app.css">
+        <link rel="stylesheet" href="styles/app.new.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
-        <script src="scripts/jquery.js"></script>
-        <script src="scripts/jquery-ui.js"></script>
-        <script src="scripts/audio.js"></script>
-        <script src="scripts/app.js"></script>
+        <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://unpkg.com/draggabilly@2.1/dist/draggabilly.pkgd.min.js"></script>
+
+        <script src="js/app.js"></script>
     </head>
-    <body class="desktop">
-        <div class="desktop__icon" id="desktop--cinco"></div>
-        <div class="desktop__icon" id="desktop--original"></div>
+    <body>
+        <div class="desktop">
+            <a href="#" class="desktop-icon icon-cinco">
+                <span class="title">Cinco 2.5</span>
+            </a>
+            <a href="#" class="desktop-icon icon-original">
+                <span class="title">Original Video</span>
+            </a>
 
-        <div class="windows">
-            <div id="window--welcome" title="Cinco Identity Generator 2.5" class="window">
-                <img class="header" src="images/cinco.png">
-                <div class="progress">
-                    <h2>Cinco Identity Generator 2.5</h2>
+            <div class="window" id="window-welcome">
+
+                <div class="window-titlebar">
+                    <button type="button" class="btn-close" title="Close"><i class="fa fa-2x fa-minus"></i></button>
+
+                    <span class="title">Cinco Identity Generator 2.5</span>
+
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-up"></i></button>
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-down"></i></button>
+                </div>
+
+                <div class="window-content">
+                    <img class="header" src="images/cinco.png">
+                    <div class="progress">
+                        <h2>Cinco Identity Generator 2.5</h2>
+                        <progress max="100" value="10"></progress>
+                        <h3>Please wait...</h3>
+                    </div>
+
+                    <div class="options">
+                        <h2>Please choose a sequence:</h2>
+                        <ul>
+                            <li>
+                                <img src="images/btn_celery.png" id="option-celery">
+                                <h4>Celery Man</h4>
+                            </li>
+                            <li>
+                                <img src="images/btn_oyster.png" id="option-oyster">
+                                <h4>Oyster</h4>
+                            </li>
+                            <li>
+                                <img src="images/btn_tayne.png" id="option-tayne">
+                                <h4>Tayne</h4>
+                            </li>
+                            <li>
+                                <img src="images/btn_mozza.png" id="option-mozza">
+                                <h4>Mozza-Rell</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window" id="window-prompt">
+                <div class="window-titlebar">
+                    <button type="button" class="btn-close" title="Close"><i class="fa fa-2x fa-minus"></i></button>
+
+                    <span class="title">Paul's COMPUTER</span>
+
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-up"></i></button>
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-down"></i></button>
+                </div>
+
+                <div class="window-content">
+                    <p>Good morning Paul.</p>
+                </div>
+            </div>
+
+            <div class="window" id="window-loader">
+                <div class="window-titlebar">
+                    <button type="button" class="btn-close" title="Close"><i class="fa fa-2x fa-minus"></i></button>
+
+                    <span class="title">Cinco Identity Generator 2.5</span>
+
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-up"></i></button>
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-down"></i></button>
+                </div>
+
+                <div class="window-content">
                     <progress max="100" value="10"></progress>
-                    <h3>Please wait...</h3>
-                </div>
-
-                <div class="options">
-                    <h2>Please choose a sequence:</h2>
-                    <ul>
-                        <li>
-                            <img src="images/btn_celery.png" id="option--celery">
-                            <h4>Celery Man</h4>
-                        </li>
-                        <li>
-                            <img src="images/btn_oyster.png" id="option--oyster">
-                            <h4>Oyster</h4>
-                        </li>
-                        <li>
-                            <img src="images/btn_tayne.png" id="option--tayne">
-                            <h4>Tayne</h4>
-                        </li>
-                        <li>
-                            <img src="images/btn_mozza.png" id="option--mozza">
-                            <h4>Mozza-Rell</h4>
-                        </li>
-                    </ul>
+                    <h3>Loading, please wait...</h3>
                 </div>
             </div>
 
-            <div id="window--prompt" title="Paul's COMPUTER" class="window--prompt">
-                <p>Good morning Paul.</p>
-            </div>
+            <div class="window" id="window-original">
+                <div class="window-titlebar">
+                    <button type="button" class="btn-close" title="Close"><i class="fa fa-2x fa-minus"></i></button>
 
-            <div id="window--loader" title="Cinco Identity Generator 2.5" class="window">
-                <progress max="100" value="10"></progress>
-                <h3>Loading, please wait...</h3>
-            </div>
+                    <span class="title">Cinco Video Generator</span>
 
-            <div id="window--original" title="Cinco Video Generator" class="window">
-                <iframe width="560" height="315" src="http://www.youtube.com/embed/MHWBEK8w_YY?enablejsapi=1" frameborder=0 allowfullscreen></iframe>
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-up"></i></button>
+                    <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-down"></i></button>
+                </div>
+
+                <div class="window-content">
+                    <iframe width="560" height="315" src="http://www.youtube.com/embed/MHWBEK8w_YY?enablejsapi=1" frameborder=0 allowfullscreen></iframe>
+                </div>
             </div>
         </div>
+
+        <div id="cinco-audio">
+            <audio src="audio/celery.wav" id="audio-celery" preload="auto" loop></audio>
+            <audio src="audio/oyster.wav" id="audio-oyster" preload="auto" loop></audio>
+            <audio src="audio/tayne.wav" id="audio-tayne" preload="auto" loop></audio>
+        </div>
+
+        <script>
+            application.boot();
+        </script>
     </body>
 </html>
