@@ -1,0 +1,217 @@
+*,
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+/******************************************************* desktop */
+
+.desktop {
+    background-color: #40AAAC;
+    font-family: sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+
+/******************************************************* desktop icons */
+
+.desktop-icon {
+    cursor: pointer;
+    color: black;
+    display: block;
+    height: 4rem;
+    position: relative;
+    margin: 1rem;
+    width: 5rem;
+}
+
+.icon-cinco {
+    background: url(../new/folder.png) no-repeat 50% 50%;
+}
+
+.icon-original {
+    background: url(../new/cd.png) no-repeat 50% 50%;
+}
+
+.desktop-icon .title {
+    bottom: 0;
+    display: block;
+    position: absolute;
+    text-align: center;
+    width: 5rem;
+}
+
+/******************************************************* global design */
+.window {
+    background: #edeced;
+    border: 5px ridge #ccc;
+    color: black;
+    display: none;
+    outline: 1px solid #000 !important;
+    overflow: hidden;
+    margin: auto;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+}
+
+.window-content {
+    border: 0;
+    padding: 10px;
+    position: relative;
+}
+
+.window h3 {
+    display:block;
+    font-weight:bold;
+    font-size: 16px;
+    height: 20px;
+}
+
+/******************************************************* loader */
+
+#window-loader {
+    left: calc(50% - 200px);
+    top: 50%;
+}
+#window-loader h3 {
+    width: 400px;
+}
+
+#window-original {
+    left: calc(50% - 300px);
+    width: 600px;
+}
+
+/******************************************************* prompt */
+
+#window-prompt {
+    background: #000;
+    bottom: 50px;
+    color: white;
+    font-size: 36px;
+    height: 100px;
+    left: 50px;
+    text-align: left;
+    width: 500px;
+}
+
+#window-prompt .title {
+    margin-left: 35px;
+}
+/******************************************************* welcome */
+
+#window-welcome {
+    display: block;
+    left: calc(50% - 250px);
+    width: 500px;
+}
+
+#window-welcome .header {
+    width: 100%;
+}
+#window-welcome .progress  {
+    margin-top: 20px;
+}
+#window-welcome .progress span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#window-welcome .options {
+    margin: 20px auto 0;
+}
+
+#window-welcome .options h2 {
+    display: block;
+    font-weight:bold;
+    font-size: 16px;
+    height: 30px;
+    padding: 10px;
+}
+
+#window-welcome .options ul {
+    width: 450px;
+    margin: 0px auto;
+    list-style-type: none;
+    text-align: center;
+}
+#window-welcome .options ul > li {
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+    width: 100px;
+}
+
+/******************************************************* progess bar */
+.window progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 75%;
+    height: 35px;
+    margin: 20px 0;
+    border: none;
+    color: #0420ac;
+}
+
+.window progress::-moz-progress-bar {
+    background: #0420ac;
+}
+
+.window progress::-webkit-progress-bar {
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.window progress::-webkit-progress-value {
+    background: #0420ac;
+}
+
+/******************************************************* titlebar */
+.window-titlebar {
+    background: #fff;
+    border-bottom: 1px solid black;
+    cursor: move;
+    height: 30px;
+    position: relative;
+}
+
+.window-titlebar .title {
+    color: black;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.window-titlebar button {
+    background: transparent;
+    border: 0;
+    position: absolute;
+    top: 0;
+    height: 30px;
+    width: 30px;
+}
+
+.window-titlebar button:first-child {
+    left: 0;
+}
+.window-titlebar button:last-child {
+    right: 0;
+}
+
+.window-titlebar .btn-move {
+    border-left: 1px solid black;
+    right: 32px;
+    cursor: move;
+}
+
+.window-titlebar .btn-close {
+    border-right: 1px solid black;
+    cursor: pointer;
+}
