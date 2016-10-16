@@ -3,135 +3,123 @@ var application = {
 
     celery: {
         title: 'Celery Man',
-        sources: ['celery1', 'celery2', 'celery3', 'celery4'],
+        windows: [
+            { id: 'celery1', position: { top: '15%', left: '5%' } },
+            { id: 'celery2', position: { top: '20%', left: '45%' } },
+            { id: 'celery3', position: { top: '40%', left: '25%' } },
+            { id: 'celery4', position: { top: '10%', left: '65%' } }
+        ],
         progress: 0,
-        isLoaded: false,
+        loaded: [],
         renderer: function(app) {
             app.audioStop();
             app.audioStart('celery');
 
-            if (!this.isLoaded) {
-                this.isLoaded = true;
-
-                this.sources.forEach(function(id) {
-                    app.createDialog('#' + id);
-                });
-               
-                // $window1.dialog('option', 'position.at', 'left+350 top+340');
-                // $window2.dialog('option', 'position.at', 'left+40 top+200');
-                // $window3.dialog('option', 'position.at', 'left+650 top+220');
-                // $window4.dialog('option', 'position.at', 'left+290 top+50');
+            if (this.loaded.length === 0) {
+                this.loaded = this.windows.map(source => app.createVideoWindow(source));
             }
 
-            this.sources.forEach(function(id) {
-                $('#' + id).show();
-            });
+            this.loaded.forEach(win => win.style.display = 'block');
+
+            document
+                .querySelector('#window-prompt .window-content')
+                .innerHTML = '4d3d3d3 Engaged.';
         }
     },
 
     oyster: {
         title: 'OYSTER',
-        sources: ['oyster1', 'oyster2', 'oyster3'],
+        windows: [
+            { id: 'oyster1', position: { top: '10%', left: '25%' } },
+            { id: 'oyster2', position: { top: '25%', left: '5%' } },
+            { id: 'oyster3', position: { top: '40%', left: '45%' } }
+        ],
         progress: 0,
-        isLoaded: false,
+        loaded: [],
         renderer: function(app) {
             app.audioStop();
             app.audioStart('celery');
             app.audioStart('oyster');
 
-            if (!this.isLoaded) {
-                this.isLoaded = true;
-
-                this.sources.forEach(function(id) {
-                    app.createDialog('#' + id);
-                });
-               
-                // $window1.dialog('option', 'position.at', 'left+550 top+410');
-                // $window2.dialog('option', 'position.at', 'left+40 top+100');
-                // $window3.dialog('option', 'position.at', 'left+110 top+420');
-                // $window4.dialog('option', 'position.at', 'left+380 top+50');
+            if (this.loaded.length === 0) {
+                this.loaded = this.windows.map(source => app.createVideoWindow(source));
             }
 
-            this.sources.forEach(function(id) {
-                $('#' + id).show();
-            });
+            this.loaded.forEach(win => win.style.display = 'block');
+
+            document
+                .querySelector('#window-prompt .window-content')
+                .innerHTML = 'add sequence: OYSTER';
         }
     },
 
     tayne: {
         title: 'Tayne',
-        sources: ['tayne1', 'tayne2', 'tayne3', 'tayne4', 'tayne5'],
+        windows: [
+            { id: 'tayne1', position: { top: '20%', left: '35%' } },
+            { id: 'tayne2', position: { top: '35%', left: '65%' } },
+            { id: 'tayne3', position: { top: '10%', left: '5%' } },
+            { id: 'tayne4', position: { top: '25%', left: '20%' } },
+            { id: 'tayne5', position: { top: '5%', left: '50%' } }
+        ],
         progress: 0,
-        isLoaded: false,
+        loaded: [],
         renderer: function(app) {
             app.audioStop();
             app.audioStart('tayne');
 
-            if (!this.isLoaded) {
-                this.isLoaded = true;
-
-                this.sources.forEach(function(id) {
-                    app.createDialog('#' + id);
-                });
-               
-                // $window1.dialog('option', 'position.at', 'left+630 top+410');
-                // $window2.dialog('option', 'position.at', 'left+40 top+330');
-                // $window3.dialog('option', 'position.at', 'left+150 top+40');
-                // $window4.dialog('option', 'position.at', 'left+380 top+100');
-                // $window5.dialog('option', 'position.at', 'left+710 top+50');
-                // $window6.dialog('option', 'position.at', 'left+250 top+420');
+            if (this.loaded.length === 0) {
+                this.loaded = this.windows.map(source => app.createVideoWindow(source));
             }
 
-            this.sources.forEach(function(id) {
-                $('#' + id).show();
-            });
+            this.loaded.forEach(win => win.style.display = 'block');
+
+            document
+                .querySelector('#window-prompt .window-content')
+                .innerHTML = 'I have a BETA sequence I have been working on';
         }
     },
 
     mozza: {
         title: 'MOZZA-RELL',
-        sources: ['mozza1', 'mozza2'],
+        windows: [
+            { id: 'mozza1', position: { top: '10%', left: '5%' } },
+            { id: 'mozza2', position: { top: '30%', left: '35%' } }
+        ],
         progress: 0,
-        isLoaded: false,
+        loaded: [],
         renderer: function(app) {
             app.audioStop();
             app.audioStart('celery');
 
-            if (!this.isLoaded) {
-                this.isLoaded = true;
-
-                this.sources.forEach(function(id) {
-                    app.createDialog('#' + id);
-                });
-
-                // $window1.dialog('option', 'position.at', 'left+260 top+450');
-                // $window2.dialog('option', 'position.at', 'left+40 top+100');
-                // $window3.dialog('option', 'position.at', 'left+600 top+150');
+            if (this.loaded.length === 0) {
+                this.loaded = this.windows.map(source => app.createVideoWindow(source));
             }
 
-            this.sources.forEach(function(id) {
-                $('#' + id).show();
-            });
+            this.loaded.forEach(win => win.style.display = 'block');
+
+            document
+                .querySelector('#window-prompt .window-content')
+                .innerHTML = 'Good morning Paul.';
         }
     },
 
     showSequence: function(sequence) {
-        var that = this,
-            sources = this[sequence].sources,
+        var windows = this[sequence].windows,
             renderer = this[sequence].renderer.bind(this[sequence]);
 
         var sequencer = function() {
-            $("#window-welcome").hide();
+            this.embedStop();
+            this.hide('#window-original');
+            this.hide('#window-welcome');
 
             if (this[sequence].isLoaded) {
                 return renderer(this);
             }
 
-            $("#window-loader").show();
+            this.show('#window-loader');
 
-            sources.forEach(function(source) {
-                that.buildVideo(sequence, source);
-            });
+            windows.forEach(source => this.buildVideo(sequence, source.id));
         };
 
         return sequencer.bind(this);
@@ -157,8 +145,7 @@ var application = {
         this.buildVideoWindow(source, title, video);
     },
     buildVideoWindow: function(id, title, video) {
-        var html = `
-        <div class="window window-picture" id="${id}">
+        var titlebar = `
             <div class="window-titlebar">
                 <button type="button" class="btn-close" title="Close"><i class="fa fa-2x fa-minus"></i></button>
 
@@ -167,29 +154,28 @@ var application = {
                 <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-up"></i></button>
                 <button type="button" class="btn-move" title="Move"><i class="fa fa-2x fa-caret-down"></i></button>
             </div>
-            <div class="window-content"></div>
-        </div>
         `;
 
-        var $window = $(html);
+        var win = document.createElement('div')
+        win.id = id;
+        win.className = 'window window-video';
+        win.innerHTML = titlebar;
+        win.insertAdjacentElement('beforeend', video);
 
-        $window
-            .find('.window-content')
-            .append(video);
-
-        $window.appendTo('.desktop');
+        document
+            .getElementById('desktop')
+            .insertAdjacentElement('beforeend', win);
     },
     launchVideoWindow: function(sequence) {
         this[sequence].progress++;
 
-        var total = this[sequence].sources.length,
-            loaded = this[sequence].progress;
+        var total = this[sequence].windows.length,
+            loaded = this[sequence].progress,
+            percentage = (loaded < total) ? 100 * loaded / total : 100;
 
-        if (loaded < total) {
-            $("#window-loader progress").val(100 * loaded / total);
+        document.querySelector('#window-loader progress').value = percentage;
 
-        } else {
-            $("#window-loader progress").val(100);
+        if (loaded >= total) {
             this.finishSequence(sequence);
         }
     },
@@ -203,118 +189,152 @@ var application = {
         setTimeout(showIdentity.bind(this), 1000);
     },
     resetLoader: function() {
-        var $loader = $("#window-loader");
-        $loader.hide();
-        $loader
-            .find("progress")
-            .val(10);
+        this.hide('#window-loader');
+        document.querySelector('#window-loader progress').value = 10;
     },
 
     boot: function() {
-        var $window = $('#window-welcome'),
-            cinco = this.clickCinco.bind(this);
-            original = this.clickOriginal,
-            createDialog = this.createDialog.bind(this),
-            dialogs = [
-                '#window-welcome',
-                '#window-loader',
-                '#window-prompt',
-                '#window-original'
+        var windows = [
+                'window-welcome',
+                'window-loader',
+                'window-prompt',
+                'window-original'
             ];
 
-        $('.icon-cinco').on('click', cinco);
-        $('.icon-original').on('click', original);
+        document.querySelector('.icon-cinco')
+            .addEventListener('click', event => this.clickCinco(event));
+        document
+            .querySelector('.icon-original')
+            .addEventListener('click', event => this.clickOriginal(event));
 
-        dialogs.forEach(createDialog);
+        windows.forEach(win => this.createWindow(win));
 
-        $window
-            .find(".options")
-            .hide();
-        $window.show();
+        this.hide('#window-welcome .options');
+        this.show('#window-welcome');
 
-        this.loadWelcome($window);
+        this.loadWelcome();
     },
 
-    loadWelcome: function($window) {
+    loadWelcome: function() {
         var a = 10,
-            $progress = $window.find("progress"),
-            loading = function() {
+            progress = document.
+                getElementById('window-welcome')
+                .querySelector('progress'),
+            loading = function(app) {
                 a += 10;
-                $progress.val(a);
+                progress.value = a;
 
                 if (a === 100) {
                     clearInterval(loading);
-                    this.initialize();
+                    app.initialize();
                 }
             };
 
-        setInterval(loading.bind(this), 100);
+        setInterval(() => loading(this), 100);
     },
 
     initialize: function() {
-        var $welcome = $('#window-welcome');
+        this.hide('#window-welcome .progress');
+        this.show('#window-welcome .options');
+        this.show('#window-prompt');
 
-        $welcome.find('.progress').hide();
-        $welcome.find('.options').show();
-        $("#window-prompt").show();
+        var showSequence = this.showSequence.bind(this);
 
-        $("#option-celery").on('click', this.showSequence('celery'));
-        $("#option-oyster").on('click', this.showSequence('oyster'));
-        $("#option-tayne").on('click', this.showSequence('tayne'));
-        $("#option-mozza").on('click', this.showSequence('mozza'));
+        ['celery', 'oyster', 'tayne', 'mozza']
+            .forEach(source => this.addClicker(source));
     },
-
-    audioStop: function() {
-        $('#cinco-audio audio').trigger('pause');
-    },
-    audioStart: function(sequence) {
-        $('#audio-' + sequence).trigger('play');
+    addClicker: function(source) {
+        document
+            .getElementById('option-' + source)
+            .addEventListener('click', this.showSequence(source));
     },
 
     clickCinco: function() {
-        $(".window").hide();
-        $('#window-welcome').show();
-        $('#window-prompt').show();
-        this.stopEmbed();
+        this.hide('.window');
+        this.show('#window-welcome');
+        this.show('#window-prompt');
+
+        document
+            .querySelector('#window-prompt .window-content')
+            .innerHTML = 'Good morning Paul.';
+
+        this.embedStop();
         this.audioStop();
     },
     clickOriginal: function() {
-        $('#window-original').show();
+        this.clickCinco();
+        this.show('#window-original');
+        this.embedStart();
     },
 
-    stopEmbed: function(e) {
-        var iframe = document.querySelector('#window-original')
-                .getElementsByTagName("iframe")[0]
-                .contentWindow,
-            youtubeArgs = {
-                event: "command",
-                func: "pauseVideo",
-                args: ""
-            };
+    embedStart: function(e) {
+        var youtubeArgs = { event: 'command', func: 'playVideo', args: '' },
+            iframe = document.querySelector('#window-original')
+                .getElementsByTagName('iframe')[0]
+                .contentWindow;
 
         iframe.postMessage(JSON.stringify(youtubeArgs), '*');
     },
+    embedStop: function(e) {
+        var youtubeArgs = { event: 'command', func: 'pauseVideo', args: '' },
+            iframe = document.querySelector('#window-original')
+                .getElementsByTagName('iframe')[0]
+                .contentWindow;
 
-    createDialog: function(elem) {
-        var $elem = $(elem),
+        iframe.postMessage(JSON.stringify(youtubeArgs), '*');
+    },
+    audioStop: function() {
+        document
+            .querySelectorAll('#cinco-audio audio')
+            .forEach(elem => elem.pause());
+    },
+    audioStart: function(sequence) {
+        document
+            .getElementById('audio-' + sequence)
+            .play();
+    },
+
+    createVideoWindow: function(source) {
+        var win = this.createWindow(source.id);
+        for (var coord in source.position) {
+            win.style[coord] = source.position[coord];
+        }
+
+        return win;
+    },
+    createWindow: function(id) {
+        var elem = document.getElementById(id),
             closeHandler = this.closeDialog.bind(this),
             options = {
                 handle: '.window-titlebar'
             };
 
-        $elem
-            .draggabilly(options)
-            .find('.btn-close')
-            .on('click', closeHandler);
+        new Draggabilly(elem, options);
 
-        return $elem;
+        elem
+            .querySelector('.btn-close')
+            .addEventListener('click', closeHandler);
+
+        return elem;
     },
     closeDialog: function(event) {
-        var $window = $(event.target).closest('.window');
+        var elem = event.target,
+            win = elem.parentElement.parentElement.parentElement;
 
-        $window.hide();
-        if ($window.attr('id') === 'window-original') {
-            this.stopEmbed();
+        win.style.display = 'none';
+        if (win.matches('#window-original')) {
+            this.embedStop();
         }
+    },
+
+    hide: function(selector) {
+        document
+        .querySelectorAll(selector)
+        .forEach(elem => elem.style.display = 'none');
+    },
+    show: function(selector) {
+        document
+        .querySelectorAll(selector)
+        .forEach(elem => elem.style.display = 'block');
     }
 };
