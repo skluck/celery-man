@@ -7,7 +7,7 @@ html {
 
 /******************************************************* desktop */
 
-.desktop {
+#desktop {
     background-color: #40AAAC;
     font-family: sans-serif;
     font-size: 11px;
@@ -31,11 +31,11 @@ html {
 }
 
 .icon-cinco {
-    background: url(../new/folder.png) no-repeat 50% 50%;
+    background: url(../img/folder.png) no-repeat 50% 50%;
 }
 
 .icon-original {
-    background: url(../new/cd.png) no-repeat 50% 50%;
+    background: url(../img/cd.png) no-repeat 50% 50%;
 }
 
 .desktop-icon .title {
@@ -66,6 +66,13 @@ html {
     position: relative;
 }
 
+.window-video {
+    min-width: 200px;
+}
+.window-video video {
+    width: 100%;
+}
+
 .window h3 {
     display:block;
     font-weight:bold;
@@ -84,7 +91,8 @@ html {
 }
 
 #window-original {
-    left: calc(50% - 300px);
+    top: 10%;
+    left: 10%;
     width: 600px;
 }
 
@@ -97,13 +105,14 @@ html {
     font-size: 36px;
     height: 100px;
     left: 50px;
+    min-width: 500px;
     text-align: left;
-    width: 500px;
 }
 
-#window-prompt .title {
-    margin-left: 35px;
+#window-prompt .window-content {
+    font-family: 'VT323', monospace;
 }
+
 /******************************************************* welcome */
 
 #window-welcome {
@@ -181,12 +190,14 @@ html {
     cursor: move;
     height: 30px;
     position: relative;
+    text-align: left;
 }
 
 .window-titlebar .title {
     color: black;
     font-size: 16px;
     line-height: 30px;
+    padding-left: 35px;
 }
 
 .window-titlebar button {
