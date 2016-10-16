@@ -10,6 +10,10 @@ Updated in the following ways:
 - Video uses mp4 instead of gif
 - Audio uses mp3 instead of wav
 
+## Example
+
+![example](img/example.png)
+
 ## Todo
 
 - [ ] Browser testing (Chrome 53+, Firefox 49+, Edge)
