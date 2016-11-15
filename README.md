@@ -17,5 +17,6 @@ Updated in the following ways:
 ## Todo
 
 - [ ] Browser testing (Chrome 53+, Firefox 49+, Edge)
+- [ ] Mobile-friendly (mobile safari)
 - [ ] NPM package
 - [ ] Ability to use in konami code / easter egg fashion
